@@ -26,7 +26,7 @@ public class Calculator {
     @ResponsePayload
     @PayloadRoot(namespace = "http://kpmg.com/krisdemo/types/calculator", localPart = "SubtractionInput")
     public Output subtraction(@RequestPayload SubtractionInput input){
-        logger.info("Request received for addition with input "+input);
+        logger.info("Request received for subtraction with input "+input);
         ObjectFactory objectFactory = new ObjectFactory();
         Output output = objectFactory.createOutput();
         output.setResult(input.getNumber1() - input.getNumber2());
@@ -36,7 +36,7 @@ public class Calculator {
     @ResponsePayload
     @PayloadRoot(namespace = "http://kpmg.com/krisdemo/types/calculator", localPart = "MultiplicationInput")
     public Output multiplication(@RequestPayload MultiplicationInput input){
-        logger.info("Request received for addition with input "+input);
+        logger.info("Request received for multiplication with input "+input);
         ObjectFactory objectFactory = new ObjectFactory();
         Output output = objectFactory.createOutput();
         output.setResult(input.getNumber1() * input.getNumber2());
@@ -46,7 +46,7 @@ public class Calculator {
     @ResponsePayload
     @PayloadRoot(namespace = "http://kpmg.com/krisdemo/types/calculator", localPart = "DivisionInput")
     public Output division(@RequestPayload DivisionInput input){
-        logger.info("Request received for addition with input "+input);
+        logger.info("Request received for division with input "+input);
         if(input.getNumber2() == 0){
             throw new IllegalArgumentException("Divisor can't be null");
         }
