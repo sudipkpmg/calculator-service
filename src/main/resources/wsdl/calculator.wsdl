@@ -154,8 +154,10 @@
     <wsdl:service name="Calculator_Service">
         <wsdl:documentation>Calculator Service</wsdl:documentation>
         <wsdl:port name="Calculator_PortType" binding="tns:Calculator_SoapBinding">
-<!--            <soap:address location="http://localhost:8080/krisdemo/ws" />-->
             <soap:address location="http://calculator-service-git-calculator-service.apps.kpmgocp.stotenrhos.com/krisdemo/ws" />
+        </wsdl:port>
+        <wsdl:port name="Calculator_PortType_Local" binding="tns:Calculator_SoapBinding">
+            <soap:address location="http://localhost:8080/krisdemo/ws" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
