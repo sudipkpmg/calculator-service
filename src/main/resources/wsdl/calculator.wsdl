@@ -111,50 +111,10 @@
         </wsdl:operation>
     </wsdl:portType>
 
-<!--    <wsdl:binding name="Calculator_SoapBinding" type="tns:Calculator_PortType">-->
-<!--        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />-->
-<!--        <wsdl:operation name="addition">-->
-<!--            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/addition" />-->
-<!--            <wsdl:input>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:input>-->
-<!--            <wsdl:output>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:output>-->
-<!--        </wsdl:operation>-->
-<!--        <wsdl:operation name="subtraction">-->
-<!--            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/substraction" />-->
-<!--            <wsdl:input>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:input>-->
-<!--            <wsdl:output>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:output>-->
-<!--        </wsdl:operation>-->
-<!--        <wsdl:operation name="multiplication">-->
-<!--            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/multiplication" />-->
-<!--            <wsdl:input>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:input>-->
-<!--            <wsdl:output>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:output>-->
-<!--        </wsdl:operation>-->
-<!--        <wsdl:operation name="division">-->
-<!--            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/division" />-->
-<!--            <wsdl:input>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:input>-->
-<!--            <wsdl:output>-->
-<!--                <soap:body use="literal" />-->
-<!--            </wsdl:output>-->
-<!--        </wsdl:operation>-->
-<!--    </wsdl:binding>-->
-
-    <wsdl:binding name="Calculator_Openshift_SoapBinding" type="tns:Calculator_PortType">
+    <wsdl:binding name="Calculator_SoapBinding" type="tns:Calculator_PortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsdl:operation name="addition">
-            <soap:operation soapAction="" />
+            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/addition" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
@@ -163,7 +123,7 @@
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="subtraction">
-            <soap:operation soapAction="" />
+            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/substraction" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
@@ -172,7 +132,7 @@
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="multiplication">
-            <soap:operation soapAction="" />
+            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/multiplication" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
@@ -181,7 +141,7 @@
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="division">
-            <soap:operation soapAction="" />
+            <soap:operation soapAction="http://kpmg.com/krisdemo/services/calculator/division" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
@@ -193,11 +153,8 @@
 
     <wsdl:service name="Calculator_Service">
         <wsdl:documentation>Calculator Service</wsdl:documentation>
-<!--        <wsdl:port name="Calculator_PortType" binding="tns:Calculator_SoapBinding">-->
-<!--            <soap:address location="http://localhost:8080/krisdemo/ws/calculatorDemo" />-->
-<!--        </wsdl:port>-->
-        <wsdl:port name="Calculator_PortType" binding="tns:Calculator_Openshift_SoapBinding">
-            <soap:address location="http://country-web-service-country-web-service.apps.kpmgocp.stotenrhos.com/krisdemo/ws" />
+        <wsdl:port name="Calculator_PortType" binding="tns:Calculator_SoapBinding">
+            <soap:address location="http://0.0.0.0/krisdemo/ws/calculatorDemo" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
