@@ -10,6 +10,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Endpoint
 public class CalculatorService {
 
@@ -21,13 +24,14 @@ public class CalculatorService {
         logger.info("Request received for addition with input {} and {} ", input.getNumber1(), input.getNumber2() );
         String payload = JsonUtil.toJson(input);
         logger.info("payload = {}", JsonUtil.toJson(input));
+        String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
                 "CALC_API",
                 "SOAP",
                 "POST",
                 payload,
                 null,
-                ""
+                originationSystemId
         );
         ObjectFactory objectFactory = new ObjectFactory();
         Output output = objectFactory.createOutput();
@@ -40,14 +44,15 @@ public class CalculatorService {
     public Output subtraction(@RequestPayload SubtractionInput input){
         logger.info("Request received for subtraction with input {} and {} ", input.getNumber1(), input.getNumber2() );
         String payload = JsonUtil.toJson(input);
-        logger.info("payload = {}", JsonUtil.toJson(input));
+        logger.info("payload = {}", payload);
+        String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
                 "CALC_API",
                 "SOAP",
                 "POST",
                 payload,
                 null,
-                ""
+                originationSystemId
         );
         ObjectFactory objectFactory = new ObjectFactory();
         Output output = objectFactory.createOutput();
@@ -60,14 +65,15 @@ public class CalculatorService {
     public Output multiplication(@RequestPayload MultiplicationInput input){
         logger.info("Request received for multiplication with input {} and {} ", input.getNumber1(), input.getNumber2() );
         String payload = JsonUtil.toJson(input);
-        logger.info("payload = {}", JsonUtil.toJson(input));
+        logger.info("payload = {}", payload);
+        String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
                 "CALC_API",
                 "SOAP",
                 "POST",
                 payload,
                 null,
-                ""
+                originationSystemId
         );
         ObjectFactory objectFactory = new ObjectFactory();
         Output output = objectFactory.createOutput();
@@ -80,14 +86,15 @@ public class CalculatorService {
     public Output division(@RequestPayload DivisionInput input){
         logger.info("Request received for division with input {} and {} ", input.getNumber1(), input.getNumber2() );
         String payload = JsonUtil.toJson(input);
-        logger.info("payload = {}", JsonUtil.toJson(input));
+        logger.info("payload = {}", payload);
+        String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
                 "CALC_API",
                 "SOAP",
                 "POST",
                 payload,
                 null,
-                ""
+                originationSystemId
         );
         if(input.getNumber2() == 0){
             throw new IllegalArgumentException("Divisor can't be null");
@@ -96,5 +103,12 @@ public class CalculatorService {
         Output output = objectFactory.createOutput();
         output.setResult(input.getNumber1() / input.getNumber2());
         return output;
+    }
+
+    private String createOriginationSystemId() {
+        Date now = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        String originationSystemId = "System_" + simpleDateFormat.format(now);
+        return originationSystemId;
     }
 }
