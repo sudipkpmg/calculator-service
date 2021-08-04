@@ -26,7 +26,7 @@ public class CalculatorService {
         logger.info("payload = {}", JsonUtil.toJson(input));
         String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
-                "CALC_API",
+                "STORE_API",
                 "SOAP",
                 "POST",
                 payload,
@@ -47,7 +47,7 @@ public class CalculatorService {
         logger.info("payload = {}", payload);
         String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
-                "CALC_API",
+                "STORE_API",
                 "SOAP",
                 "POST",
                 payload,
@@ -68,7 +68,7 @@ public class CalculatorService {
         logger.info("payload = {}", payload);
         String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
-                "CALC_API",
+                "STORE_API",
                 "SOAP",
                 "POST",
                 payload,
@@ -89,7 +89,7 @@ public class CalculatorService {
         logger.info("payload = {}", payload);
         String originationSystemId = createOriginationSystemId();
         RecordTransaction.recordTransaction(
-                "CALC_API",
+                "STORE_API",
                 "SOAP",
                 "POST",
                 payload,
@@ -108,7 +108,7 @@ public class CalculatorService {
     private String createOriginationSystemId() {
         Date now = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        String originationSystemId = "System_" + simpleDateFormat.format(now);
+        String originationSystemId = "StoreApi_" + simpleDateFormat.format(now);
         return originationSystemId;
     }
 }
